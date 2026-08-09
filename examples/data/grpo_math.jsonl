@@ -1,0 +1,2 @@
+{"prompt":"Compute 15 + 27. Give the final number.","answer":42,"domain":"math","effort":"high","target_tokens":64}
+{"prompt":"Compute 9 × 8. Give the final number.","answer":72,"domain":"math","effort":"high","target_tokens":64}

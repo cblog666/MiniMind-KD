@@ -1,0 +1,2 @@
+{"messages":[{"role":"user","content":"What is 12 + 30?"},{"role":"assistant","content":"<think>I add the two integers.</think> The answer is 42."}]}
+{"messages":[{"role":"user","content":"计算 9 × 7。"},{"role":"assistant","content":"<think>9 乘以 7 等于 63。</think>答案是 63。"}]}

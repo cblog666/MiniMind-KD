@@ -1,0 +1,9 @@
+include CONTRIBUTING.md
+include LICENSE
+include NOTICE
+include THIRD_PARTY.md
+include requirements.txt
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include examples *.jsonl
+recursive-include scripts *.py

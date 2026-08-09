@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Credentials and local machine configuration.
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.yaml
+
+# Training artifacts and datasets are never committed by default.
+/data/
+/out/
+/checkpoints/
+/runs/
+/wandb/
+/swanlog/
+*.pt
+*.pth
+*.bin
+*.safetensors

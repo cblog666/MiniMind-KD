@@ -1,0 +1,6 @@
+numpy>=1.26
+torch>=2.4
+PyYAML>=6.0
+safetensors>=0.4.5
+tokenizers>=0.20
+transformers>=4.46

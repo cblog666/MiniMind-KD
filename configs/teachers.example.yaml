@@ -1,0 +1,17 @@
+teachers:
+  - name: math-high
+    checkpoint: ../out/experts/math-high/final
+    domains: [math]
+    weight: 1.0
+  - name: code-high
+    checkpoint: ../out/experts/code-high/final
+    domains: [code]
+    weight: 1.0
+  - name: agent-max
+    checkpoint: ../out/experts/agent-max/final
+    domains: [agent]
+    weight: 1.0
+  - name: instruction-none
+    checkpoint: ../out/experts/instruction-none/final
+    domains: [general, instruction]
+    weight: 1.0

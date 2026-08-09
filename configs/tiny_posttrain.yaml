@@ -1,0 +1,43 @@
+model:
+  vocab_size: 6400
+  hidden_size: 128
+  num_hidden_layers: 4
+  num_attention_heads: 4
+  num_key_value_heads: 2
+  max_seq_len: 512
+  kda_decay_rank: 32
+  mla_kv_lora_rank: 32
+  attnres_layers_per_block: 2
+  num_dense_layers: 1
+  num_routed_experts: 8
+  num_experts_per_token: 2
+  num_shared_experts: 1
+  moe_latent_size: 64
+  moe_intermediate_size: 128
+  shared_intermediate_size: 256
+  mtp_loss_weight: 0.0
+training:
+  sequence_length: 256
+  batch_size: 2
+  gradient_accumulation_steps: 1
+  epochs: 1
+  learning_rate: 0.00001
+  min_learning_rate: 0.000001
+  optimizer: adamw
+  precision: bf16
+  device: auto
+grpo:
+  num_generations: 4
+  max_new_tokens: 128
+  temperature: 1.0
+  top_p: 0.95
+  clip_epsilon: 0.2
+  kl_beta: 0.04
+  length_penalty: 0.01
+rewards:
+  numeric: 1.0
+  reasoning_format: 0.1
+opd:
+  max_new_tokens: 128
+  temperature: 1.0
+  top_p: 0.95

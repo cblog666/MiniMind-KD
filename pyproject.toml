@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minimind-kd"
+version = "0.1.0"
+description = "Readable Kimi-K3-style pre-training and DeepSeek-V4-style post-training at MiniMind scale"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{name = "MiniMind-KD contributors"}]
+keywords = ["language-model", "mixture-of-experts", "grpo", "distillation", "minimind"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.26",
+  "safetensors>=0.4.5",
+  "torch>=2.4",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+train = [
+  "tokenizers>=0.20",
+  "transformers>=4.46",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+minimind-kd-tokenizer = "minimind_kd.cli.train_tokenizer:main"
+minimind-kd-pretrain = "minimind_kd.cli.pretrain:main"
+minimind-kd-sft = "minimind_kd.cli.sft:main"
+minimind-kd-grpo = "minimind_kd.cli.grpo:main"
+minimind-kd-opd = "minimind_kd.cli.opd:main"
+minimind-kd-chat = "minimind_kd.cli.chat:main"
+
+[tool.setuptools.packages.find]
+include = ["minimind_kd*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

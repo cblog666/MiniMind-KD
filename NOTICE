@@ -1,0 +1,15 @@
+MiniMind-KD
+Copyright 2026 MiniMind-KD contributors
+
+This project is an independent research and educational implementation.
+It is designed to remain familiar to users of MiniMind, created by Jingyao
+Gong and contributors and distributed under the Apache License 2.0:
+https://github.com/jingyaogong/minimind
+
+The architecture is based on publicly described research from Moonshot AI
+and DeepSeek-AI. No Kimi K3 or DeepSeek V4 model weights, private datasets,
+service credentials, trademarks, or unpublished training recipes are included.
+See THIRD_PARTY.md for citations and implementation boundaries.
+
+MiniMind-KD is not affiliated with or endorsed by MiniMind, Moonshot AI,
+Kimi, DeepSeek-AI, or their contributors.
