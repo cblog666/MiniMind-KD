@@ -1,6 +1,6 @@
 # MiniMind-KD
 
-一个面向学习与小规模实验的独立研究项目：在 MiniMind 易读、可从零训练的工程尺度上，实现 Kimi K3 文本主干的关键预训练结构，并实现 DeepSeek V4 技术报告公开的后训练主线。
+一个面向学习与小规模实验的独立研究项目：在 MiniMind 易读、可从零训练的工程尺度上，实现 Kimi K3 文本主干的关键预训练结构，并实现 DeepSeek V4 技术报告公开的后训练主线。仓库同时提供可复现的 KD CPU 工程跑分，并固定引用原版 MiniMind 的公开能力成绩作为对照。
 
 > [!IMPORTANT]
 > 本项目不是 MiniMind、Moonshot AI 或 DeepSeek-AI 的官方项目，也不声称复现 Kimi K3 或 DeepSeek V4-Flash-0731 的能力。它不包含任何官方权重、私有数据、训练配方或未公开实现。项目名中的 `KD` 表示 **Kimi × DeepSeek**，同时也呼应最终的 on-policy distillation 阶段。
