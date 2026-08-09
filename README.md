@@ -150,6 +150,26 @@ minimind-kd-chat \
 
 当前 `generate` 为便于理解的全前缀重算版本。生产推理需要把 KDA recurrent state、ShortConv state 和 MLA KV cache 接入 fused kernel；本项目不会把教学实现宣传成百万上下文高性能推理。
 
+## 性能与原版 MiniMind 对照
+
+原版 MiniMind 不在这里重复运行。下表直接引用其仓库在提交 [`393e387`](https://github.com/jingyaogong/minimind/blob/393e387e9ad99f0f04c296e4c5e7353f4444629f/README.md#-客观评测) 公布的 `lm-evaluation-harness` 成绩：
+
+| 模型 | 参数量 | C-Eval / CMMLU | ARC-Easy / PIQA / OpenBookQA / HellaSwag / Social-IQA |
+|---|---:|---:|---:|
+| MiniMind-3（原项目公布） | 64M | 24.89 / 25.38 | 28.49 / 50.65 / 23.60 / 28.28 / 34.19 |
+| MiniMind-3-MoE（原项目公布） | 198M | 25.48 / 24.32 | 27.74 / 50.71 / 26.20 / 27.43 / 34.03 |
+| MiniMind-KD `small.yaml` | 196.4M 总计 / 75.3M 激活 | 待正式训练权重 | 待正式训练权重 |
+
+MiniMind-KD 仓库目前提供架构和训练代码，不附带经过等量完整预训练、SFT 与 OPD 的权重。随机初始化或一步烟雾 checkpoint 的选择题分数没有比较意义，因此没有把随机下界包装成能力跑分。KD 的参数量接近原版 198M MoE，只表示模型规模接近，不表示训练预算或质量相同。
+
+已经实际运行的是 KD 工程性能测试。2026-08-09 在 8 线程 AMD EPYC 9V74 CPU、PyTorch 2.13.0、FP32、batch 1、sequence 64 上得到：
+
+| KD 配置 | 总参数 / 估算激活参数 | 整段前向 | 训练步 | 无缓存解码 | 峰值进程 RSS |
+|---|---:|---:|---:|---:|---:|
+| `small.yaml` | 196.4M / 75.3M | 249.07 token/s | 39.85 token/s | 6.81 token/s | 4277.3 MiB |
+
+训练吞吐包含 next-token + MTP 前向、反向和 AdamW 更新；解码使用当前全前缀重算实现，不能代表接入 fused KDA/MLA cache 后的生产速度。原始 JSON、完整命令、指标定义和复现限制见 [benchmarks/](benchmarks/)。原版没有公布同一机器、同一脚本的吞吐，因此不虚构速度提升百分比。
+
 ## 测试与安全检查
 
 ```bash
